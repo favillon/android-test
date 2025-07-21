@@ -1,16 +1,16 @@
 package testing.questions;
 
-import net.serenitybdd.screenplay  .Actor;
+import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.targets.Target;
-import testing.ui.LoginPageElements;
+import testing.ui.CartPage;
 
-public class ErrorLogin implements Question<Boolean> {
+public class TitleProductCart implements Question<Boolean> {
     private final String message;
     private final Target element;
 
-    public ErrorLogin(String message, Target element) {
+    public TitleProductCart(String message, Target element) {
         this.message = message;
         this.element = element;
     }
@@ -24,7 +24,7 @@ public class ErrorLogin implements Question<Boolean> {
         return true;
     }
 
-    public static ErrorLogin porUsuarioBloqueado(String message) {
-        return new ErrorLogin(message, LoginPageElements.TEXT_USER_LOCKED);
+    public static TitleProductCart viewTitleProductCart(String message) {
+        return new TitleProductCart(message, CartPage.TITLE_PRODUCT_CART);
     }
 }
