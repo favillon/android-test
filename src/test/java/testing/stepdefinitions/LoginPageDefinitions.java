@@ -21,14 +21,12 @@ public class LoginPageDefinitions {
     @When("el usuario ingresa con  el username {string} y  password {string}")
     public void elUsuarioIngresaConElUsernameYPassword(String username, String password) {
         OnStage.theActorInTheSpotlight().attemptsTo(Login.withCredentials(username, password));
+        OnStage.theActorInTheSpotlight().attemptsTo(OpenMenu.hamburger());
     }
 
     @Then("el usuario deberia ver la opcion de {string} en el menu")
     public void elUsuarioDeberiaVerLaOpcionDeEnElMenu(String text) {
-        OnStage.theActorInTheSpotlight().attemptsTo(OpenMenu.hamburger());
-        OnStage.theActorInTheSpotlight().should(seeThat(
-                Visibility.of(HomePage.DASHBOARD_TEXT_LOGOUT)
-        ));
+        OnStage.theActorInTheSpotlight().should(seeThat(LoginSuccess.viewInMenuTextLogout(text)));
     }
 
     @Then("el usuario  vera el mensaje {string}")
